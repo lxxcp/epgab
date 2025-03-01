@@ -19,28 +19,32 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # 使用 Python 3.9
+          python-version: '3.9'
 
-      # 3. 安装依赖
+      # 3. 设置 PYTHONPATH
+      - name: Set PYTHONPATH
+        run: |
+          echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+
+      # 4. 安装依赖
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install django requests beautifulsoup4 python-dateutil
 
-      # 4. 设置 Django 环境变量
+      # 5. 设置 Django 环境变量
       - name: Set Django environment variables
         run: |
           echo "DJANGO_SETTINGS_MODULE=epg.settings" >> $GITHUB_ENV
 
-      # 5. 运行 crawl.py
+      # 6. 运行 crawl.py
       - name: Run crawl.py
         run: |
-          # python crawl.py  # 如果 crawl.py 在根目录
-          python crawl/crawl.py  # 如果 crawl.py 在 crawl 目录
+          python crawl/crawl.py
 
-      # 6. 上传生成的 XML 文件作为构建产物
+      # 7. 上传生成的 XML 文件作为构建产物
       - name: Upload XML file as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: tvmao.xml
           path: tvmao.xml
