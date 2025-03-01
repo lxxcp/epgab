@@ -2,8 +2,6 @@ name: Run Crawl Script
 
 on:
   push:
-分支:
-      - main  # 在 main 分支推送时触发
   schedule:
     - cron: '0 0 * * *'  # 每天 UTC 时间 00:00 自动运行
   workflow_dispatch:  # 允许手动触发
