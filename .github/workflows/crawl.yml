@@ -35,8 +35,8 @@ jobs:
       # 5. 运行 crawl.py
       - name: Run crawl.py
         run: |
-          python crawl.py  # 如果 crawl.py 在根目录
-          # python crawl/crawl.py  # 如果 crawl.py 在 crawl 目录
+          # python crawl.py  # 如果 crawl.py 在根目录
+          python crawl/crawl.py  # 如果 crawl.py 在 crawl 目录
 
       # 6. 上传生成的 XML 文件作为构建产物
       - name: Upload XML file as artifact
