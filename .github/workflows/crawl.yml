@@ -44,7 +44,7 @@ jobs:
 
       # 7. 上传生成的 XML 文件作为构建产物
       - name: Upload XML file as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tvmao.xml
           path: tvmao.xml
